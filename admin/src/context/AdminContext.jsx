@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { toast } from "react-toastify";
 
 export const AdminContext = createContext();
@@ -87,16 +87,20 @@ const AdminContextProvider = (props) => {
 
   const getDashData = async () => {
     try {
-      const { data } = axios.get(backendUrl + "/api/admin/admin-dashboard", {
-        headers: { aToken },
-      });
+      const { data } = await axios.get(
+        backendUrl + "/api/admin/admin-dashboard",
+
+        {
+          headers: { aToken },
+        }
+      );
       if (data.success) {
         setDashData(data.dashData);
       } else {
         toast.error(data.message);
       }
     } catch (error) {
-      toast.error(error.message);
+      toast.error(error.message + "error here ");
     }
   };
 
@@ -111,9 +115,8 @@ const AdminContextProvider = (props) => {
     appointments,
     setAppointments,
     cancelAppointment,
-    getDashData , 
-    dashData , 
-    
+    getDashData,
+    dashData,
   };
   return (
     <AdminContext.Provider value={value}>

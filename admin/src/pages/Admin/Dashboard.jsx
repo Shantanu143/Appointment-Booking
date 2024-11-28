@@ -1,8 +1,17 @@
+import { useContext, useEffect } from "react";
+import { AdminContext } from "../../context/AdminContext";
 
 const Dashboard = () => {
-  return (
-    <div>Dashboard</div>
-  )
-}
+  const { getDashData, aToken, dashData, cancelAppointment } =
+    useContext(AdminContext);
 
-export default Dashboard
+  useEffect(() => {
+    if (aToken) {
+      getDashData();
+    }
+  }, [aToken]);
+
+  return <div>Dashboard</div>;
+};
+
+export default Dashboard;

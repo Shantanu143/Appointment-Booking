@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import { v2 as cloudinary } from "cloudinary";
 import Razorpay from "razorpay";
 
-import doctorModel from "../models/doctorModel.js"
+import doctorModel from "../models/doctorModel.js";
 import appointmentModel from "../models/appointmentModel.js";
 
 // API to register user
